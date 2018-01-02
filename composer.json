@@ -1,0 +1,8 @@
+{
+  "name": "bongrun/json-schema",
+  "autoload": {
+    "psr-4": {
+      "bongrun\\JsonSchema\\": "src/"
+    }
+  }
+}
