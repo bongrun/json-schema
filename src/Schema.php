@@ -58,11 +58,13 @@ class Schema
 
     public function getData($length = 0): array
     {
-        if ($length > 5) {
+        if ($length > 3) {
             return [];
         }
         if (!$this->dataSave) {
             $this->dataSave = $this->getDataRecursive(null, $length);
+        } else {
+            $this->data = null;
         }
         return $this->dataSave;
     }
@@ -110,7 +112,7 @@ class Schema
 
     public function getFragmentData($fragment)
     {
-        $data = $this->data;
+        $data = $this->dataSave ? $this->dataSave : $this->data;
         foreach (array_filter(explode('/', $fragment)) as $key) {
             $data = $data[$key] ?? null;
         }
